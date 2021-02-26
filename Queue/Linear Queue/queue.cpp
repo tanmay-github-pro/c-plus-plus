@@ -31,7 +31,7 @@ void queueLinear::enque(int x)
 int queueLinear::deque()
 {
     if(!isEmpty()) // checking the boolean, proceed only if queue empty check is false
-        return q[f++];
+        return q[f++]; // f++ used bcz current value of f needs to be returned before it is incremented
 }
 void queueLinear::display()
 {
@@ -65,7 +65,7 @@ int main(){
     char ch;
     do
     {
-        cout<<"1.Enque\t 2.Deque\t 3.Display\n";
+        cout<<"1.Enque\t2.Deque\t3.Display\n";
         cin>>x;
         switch(x){
             case 1:
