@@ -24,7 +24,8 @@ queueCircular::queueCircular()
 void queueCircular::enque(int x)
 {
     if(!isFull()){
-        q[(r++)%size] = x;
+        // r needs to be pre incremented
+        q[(++r)%size] = x;
         count++;
     }
 }
@@ -34,7 +35,9 @@ int queueCircular::deque()
     if(!isEmpty())
     {
         elDel=q[f];
-        (f++)%size;
+        // f also needs to be pre incremented or just use f+1 instead
+        f=(++f)%size;
+        count--;
         return elDel;
     }
 
@@ -69,7 +72,7 @@ int main(){
     char ch;
     do
     {
-        cout<<"1.Enque\t 2.Deque\t 3.Display\n";
+        cout<<"1.Enque\t2.Deque\t3.Display\n";
         cin>>x;
         switch(x){
             case 1:
