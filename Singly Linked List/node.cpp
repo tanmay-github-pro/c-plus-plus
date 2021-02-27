@@ -14,6 +14,7 @@ public:
     node* insertBegin(node *);
     node* insertAfter(node *);
     node* insertBefore(node *);
+    void display(node *);
 };
 node::node()
 {
@@ -108,26 +109,43 @@ node* node::insertBefore(node *start)
     
     return start;
 }
+void node::display(node *start) {
+    node *curr = start;
+    while (curr->next!=NULL){
+        cout<<curr->info;
+        curr = curr->next;
+    }
+}
 
 int main()
 {
     node n, *start=NULL; 
     // variable to store choice of menu driven program
     int x;
-    cout<<"1.InsertEnd\t2.InsertBeginning\t3.InsertAfter\n4.InsertBefore";
-    cin>>x;
-    switch (x)
+    char ch;
+    do
     {
-    case 1:
-        start = n.insertEnd(start); break;
-    case 2:
-        start = n.insertBegin(start); break;
-    case 3:
-        start = n.insertAfter(start); break;
-    case 4:
-        start = n.insertBefore(start); break;
+        cout<<"1.InsertEnd\t2.InsertBeginning\t3.InsertAfter\n4.InsertBefore\t5.Display";
+        cin>>x;
+        switch (x)
+        {
+        case 1:
+            start = n.insertEnd(start); break;
+        case 2:
+            start = n.insertBegin(start); break;
+        case 3:
+            start = n.insertAfter(start); break;
+        case 4:
+            start = n.insertBefore(start); break;
+        case 5:
+            n.display(start); break;
+        
+        default:
+            break;
+        }
+        cout<<"Do you wish to continue(y/n): ";
+        cin>>ch;
+    } while (ch!='n');
     
-    default:
-        break;
-    }
+    return 0;
 }
