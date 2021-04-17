@@ -8,5 +8,5 @@ int main(){
 }
 void ptr(int *p)
 {
-	cout<<*p;
+	cout<<*p<<endl;
 }
