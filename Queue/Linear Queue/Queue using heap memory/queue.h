@@ -3,7 +3,6 @@
 // When initialisation of front and rear of queue is "f = 0 and r = -1"
 // Condition for Queue to be empty: "f>r" | Condition for Queue to be full: "r == size - 1"
 #include<iostream>
-#include<iostream>
 using namespace std;
 
 class queue
