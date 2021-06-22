@@ -23,6 +23,7 @@ int main(){
                 q.display(); break;
         }
         cout<<"Do you wish to continue(y/n): ";
+        cout<<"r = "<<q.getr()<<" f = "<<q.getf()<<"\n";
         cin>>ch;
     } while (ch != 'n');
     

@@ -16,6 +16,8 @@ public:
     void display();
     bool isEmpty();
     bool isFull();
+    int getr(){return r;}
+    int getf(){return f;}
 };
 
 queueCircular::queueCircular()
@@ -26,7 +28,9 @@ void queueCircular::enque(int x)
 {
     if(!isFull()){
         // r needs to be pre incremented
-        q[(++r)%size] = x;
+        // r = (r+1)%size; then use q[r] instead of ++r/size <- this gives some error take care with brackets
+        r = (r+1)%size;
+        q[r] = x;
         count++;
     }
 }
@@ -46,8 +50,24 @@ int queueCircular::deque()
 void queueCircular::display()
 {
     if(!isEmpty())
-        for (int i = f; i <= r; (i++)%size)
+    {
+        if (r>=f)
+        {
+            for (int i = f; i <= r; (i++)%size)
             cout<<q[i]<<"\t";
+            cout<<endl;
+        }
+        else
+        {
+            for (int i = f; i < size; i++)
+                cout<<q[i]<<"\t";
+ 
+            for (int i = 0; i <= r; i++)
+                cout<<q[i]<<"\t";
+            cout<<endl;
+        }
+        
+    }
     cout<<endl;
 }
 bool queueCircular::isEmpty()
