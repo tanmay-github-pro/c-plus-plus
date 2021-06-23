@@ -1,9 +1,10 @@
 #include<iostream>
 using namespace std;
 int main(){
-    int a[50]; int n;
+    int *a; int n;
     cout<<"How many numbers are to be entered: ";
     cin>>n;
+    a = new int[n];
     cout<<"Enter numbers:"<<endl;
     for(int i=0; i<n; i++){
         cin>>a[i];
