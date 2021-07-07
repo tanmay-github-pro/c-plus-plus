@@ -3,7 +3,7 @@ using namespace std;
 
 int main()
 {
-
+    // strings taken as input
     string str1, str2;
     cin >> str1 >> str2;
     bool flag = true;
