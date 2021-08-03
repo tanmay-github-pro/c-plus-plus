@@ -1,0 +1,8 @@
+# Microsoft Summer Intern Test (MIT Manipal 2021 3rd year)
+![](Task1_1.jpg)
+![](Task1_2.jpg)
+![](Task2_1.jpg)
+![](Task2_2.jpg)
+![](Task2_3.jpg)
+![](Task2_4.jpg)
+![](Task2_5.jpg)
