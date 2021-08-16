@@ -37,6 +37,8 @@ void sortBubble(vector<int> &A, vector<int> &P) {
   }
 }
 
+// Function to sort character array b[]
+// according to the order defined by a[]
 void sortInPair(vector<int> &A, vector<int> &P) {
   int n = A.size(); // size of both A and P is same
   pair<int, char> pairedArr[n];
