@@ -3,26 +3,29 @@
 // using recursive methods
 // queue.h is user-made header file and implements all queue related functions
 // #include "queue.h"
-#include<iostream>
+#include <iostream>
 #include "tree.h"
 using namespace std;
 
-int main(){
+int main()
+{
     tree t;
     t.createBT();
-    cout<<endl;
-    t.display(t.root,0);
-    cout<<"\nInorder Traversal:\n";
+    cout << endl;
+    t.display(t.root, 0);
+    cout << "\nInorder Traversal:\n";
     t.inorder(t.root);
-    cout<<"\nPreOrder Traversal:\n";
+    cout << "\nPreOrder Traversal:\n";
     t.preorder(t.root);
-    cout<<"\nPostOrder Traversal:\n";
+    cout << "\nPostOrder Traversal:\n";
     t.postorder(t.root);
-    cout<<"\nInorder Traversal iterative:\n";
+    cout << "\nInorder Traversal iterative:\n";
     t.inorder_iterative(t.root);
-    cout<<"\nPreOrder Traversal iterative:\n";
+    cout << "\nPreOrder Traversal iterative:\n";
     t.preorder_iterative(t.root);
-    cout<<"\nPostOrder Traversal iterative:\n";
+    cout << "\nPostOrder Traversal iterative:\n";
     t.postorder(t.root);
-    cout<<endl;
+    cout << "\nLevel Order Traversal:\n";
+    t.levelorder(t.root);
+    cout << endl;
 }

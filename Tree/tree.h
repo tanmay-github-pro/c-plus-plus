@@ -184,9 +184,30 @@ void tree::postorder_iterative(node *p)
                 cout << p->data << "  ";
                 p = NULL;
             }
-            
+
             st.pop();
             p = p->rcl;
+        }
+    }
+}
+
+void tree::levelorder(node *p)
+{
+    Queue q;
+    cout << p->data << "  ";
+    q.enque(p);
+    while (!q.isEmpty())
+    {
+        p = q.deque();
+        if (p->lcl)
+        {
+            cout << p->lcl->data << "  ";
+            q.enque(p->lcl);
+        }
+        if (p->rcl)
+        {
+            cout << p->rcl->data << "  ";
+            q.enque(p->rcl);
         }
     }
 }
