@@ -1,7 +1,7 @@
 // Tree creation using Recursive method
 // Inorder, PreOrder and PostOrder traversals
 // using recursive methods
-// queue.h is user-made header file and implements all queue related functions
+// queue.h is user-made header file and implements all queue related heightctions
 // #pragma once
 
 #include <iostream>
@@ -24,7 +24,11 @@ public:
     void postorder_iterative(node *p);
     void inorder_iterative(node *p);
     void levelorder(node *p);
-    void height(node *p);
+    int noOfNodes(node *p);
+    int countDeg2(node *p);
+    int height(node *p);
+    int countLeafNodes(node *p);
+    int countDeg1(node *p);
     void display(node *root, int level);
 };
 
@@ -69,6 +73,104 @@ void tree::createBT()
         }
     }
 }
+
+// Counting Nodes
+// Leaf Nodes (degree 0) - if (!(p->lcl) && !(p->rcl))
+// Nodes with 2 children (degree 2) - if (p->lcl && p->rcl)
+// Nodes with at least 1 child (degree 1 or 2) - if (p->lcl || p->rcl)
+// Nodes with exactly 1 child (degree 1) - if ((p->lcl && !p->rcl) || (!p->lcl && p->rcl))
+
+// Counting number of nodes in tree
+/* int tree::noOfNodes(node *p)
+{
+    int x = 0, y = 0;
+    if (p)
+    {
+        x = noOfNodes(p->lcl);
+        y = noOfNodes(p->rcl);
+        return x + y + 1;
+    }
+    return 0;
+} */
+int tree::noOfNodes(node *p)
+{
+    if (!p)
+        return 0;
+    return noOfNodes(p->lcl) + noOfNodes(p->rcl) + 1;
+}
+
+int tree::countDeg2(node *p)
+{
+    int x = 0, y = 0;
+    if (p)
+    {
+        x = countDeg2(p->lcl);
+        y = countDeg2(p->rcl);
+        if (p->lcl && p->rcl)
+            return x + y + 1;
+        else
+            return x + y;
+    }
+    return 0;
+}
+
+// Counting leaf nodes
+
+/* int tree::countLeafNodes(node *p)
+{
+    int x, y;
+    if (p)
+    {
+        x = countLeafNodes(p->lcl);
+        y = countLeafNodes(p->rcl);
+        if (!(p->lcl) && !(p->rcl))
+            return x + y + 1;
+        else
+            return x + y;
+    }
+    return 0;
+} */
+int tree::countLeafNodes(node *p)
+{
+    if(!p)
+        return 0;
+    if (!p->lcl && !p->rcl)
+        return countLeafNodes(p->lcl) + countLeafNodes(p->rcl) + 1;
+    else
+        return countLeafNodes(p->lcl) + countLeafNodes(p->rcl);
+}
+
+int tree::countDeg1(node *p)
+{
+    int x, y;
+    if (p)
+    {
+        x = countDeg1(p->lcl);
+        y = countDeg1(p->rcl);
+        if (p->lcl != NULL ^ p->rcl != NULL)
+            // if ((p->lcl && !p->rcl) || (!p->lcl && p->rcl))
+            return x + y + 1;
+        else
+            return x + y;
+    }
+    return 0;
+}
+
+int tree::height(node *p)
+{
+    int x = 0, y = 0;
+    if (p)
+    {
+        x = height(p->lcl);
+        y = height(p->rcl);
+        if (x > y)
+            return x + 1;
+        else
+            return y + 1;
+    }
+    return 0;
+}
+
 //inorder traversal
 void tree::inorder(node *p)
 {
@@ -102,7 +204,7 @@ void tree::postorder(node *p)
     }
 }
 
-// function to display tree
+// heightction to display tree
 void tree::display(node *root, int level)
 {
     //int i;
