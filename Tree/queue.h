@@ -45,7 +45,7 @@ node *Queue::deque()
     if (!isEmpty())    // checking the boolean, proceed only if queue empty check is false
         return q[f++]; // f++ used bcz current value of f needs to be returned before it is incremented
     else
-        return NULL;
+        return nullptr;
 }
 bool Queue::isEmpty()
 {
