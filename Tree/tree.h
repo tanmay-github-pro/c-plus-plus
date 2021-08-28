@@ -169,6 +169,9 @@ void tree::postorder_iterative(node *p)
         }
         else
         {
+            // temp is used to hold address popped out from the stack
+            // negative address is used to move to right child
+            // positive address is used to print the node data
             temp = (long int)st.peekTop();
             if (temp >= 0)
             {
