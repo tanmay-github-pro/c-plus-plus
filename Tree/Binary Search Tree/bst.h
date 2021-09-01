@@ -19,6 +19,7 @@ public:
     node *search(node *t, int key);
     node *searchIterative(int key);
     void insert(int key);
+    node *insertRecursive(node *p, int key);
     void inorder(node *p);
     void display(node *p, int level);
 };
@@ -47,13 +48,13 @@ int bst::height(node *p)
 node *bst::search(node *t, int key)
 {
     // if t == NULL
-    if(!t)
+    if (!t)
         return NULL;
-    else if(key == t->data)
+    else if (key == t->data)
         return t;
-    else if(key < t->data)
+    else if (key < t->data)
         return search(t->lcl, key);
-    else       
+    else
         return search(t->rcl, key);
 }
 
@@ -84,6 +85,7 @@ void bst::createBST()
     }
 }
 
+// Function(iterative) to Insert elements into BST
 void bst::insert(int key)
 {
     node *t = this->root;
@@ -118,6 +120,27 @@ void bst::insert(int key)
         r->lcl = p;
     else
         r->rcl = p;
+}
+
+// Function(iterative) to Insert elements into BST
+node *bst::insertRecursive(node *p, int key)
+{
+    // temporary node to append to tree later
+    node *t;
+    // if p == NULL
+    if(!p)
+    {
+        t = new node;
+        t->data = key;
+        t->lcl = t->rcl = NULL;
+        return t;
+    }
+    if(key < t->data)
+        p->lcl = insertRecursive(p->lcl, key);
+    else
+        p->rcl = insertRecursive(p->rcl, key);
+
+    return p;
 }
 
 // Recursive Inorder function
