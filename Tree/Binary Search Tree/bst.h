@@ -13,9 +13,11 @@ private:
 
 public:
     bst();
-    void createBST();
     node *getRoot();
     int height(node *p);
+    void createBST();
+    node *search(node *t, int key);
+    node *searchIterative(int key);
     void insert(int key);
     void inorder(node *p);
     void display(node *p, int level);
@@ -39,6 +41,36 @@ int bst::height(node *p)
         return height(p->lcl) + 1;
     else
         return height(p->lcl) + 1;
+}
+
+// Recursive function to search for an element in BST
+node *bst::search(node *t, int key)
+{
+    // if t == NULL
+    if(!t)
+        return NULL;
+    else if(key == t->data)
+        return t;
+    else if(key < t->data)
+        return search(t->lcl, key);
+    else       
+        return search(t->rcl, key);
+}
+
+// Iterative function to search for an element in BST
+node *bst::searchIterative(int key)
+{
+    node *t = this->root;
+    while (t)
+    {
+        if (key == t->data)
+            return t;
+        else if (key < t->data)
+            t = t->lcl;
+        else
+            t = t->rcl;
+    }
+    return NULL;
 }
 
 void bst::createBST()
