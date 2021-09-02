@@ -20,6 +20,9 @@ public:
     node *searchIterative(int key);
     void insert(int key);
     node *insertRecursive(node *p, int key);
+    node *findInorderPredecessor(node *p);
+    node *findInorderSuccessor(node *p);
+    node *rDelete(node *p, int key);
     void inorder(node *p);
     void display(node *p, int level);
 };
@@ -128,18 +131,76 @@ node *bst::insertRecursive(node *p, int key)
     // temporary node to append to tree later
     node *t;
     // if p == NULL
-    if(!p)
+    if (!p)
     {
         t = new node;
         t->data = key;
         t->lcl = t->rcl = NULL;
         return t;
     }
-    if(key < t->data)
+    if (key < t->data)
         p->lcl = insertRecursive(p->lcl, key);
     else
         p->rcl = insertRecursive(p->rcl, key);
 
+    return p;
+}
+
+// Function (recursive) to find inorder predecessor
+// Inorder Predecessor - rightmost child of left subtree
+node *bst::findInorderPredecessor(node *p)
+{
+    while (p && p->rcl != NULL)
+        p = p->rcl;
+    return p;
+}
+
+// Function (recursive) to find inorder successor
+// Inorder Successor - leftmost child of right subtree
+node *bst::findInorderSuccessor(node *p)
+{
+    while (p && p->lcl != NULL)
+        p = p->lcl;
+    return p;
+}
+
+// Function (recursive) to delete an element from BST
+node *bst::rDelete(node *p, int key)
+{
+    // if p == NULL
+    if (!p)
+        return NULL;
+    // if p is a leaf node
+    if (!p->lcl && !p->rcl)
+    {
+        if (p == root)
+            root = NULL;
+        // free() can also be used
+        delete (p);
+        return NULL;
+    }
+    // search for element in BST
+    if (key < p->data)
+        p->lcl = rDelete(p->lcl, key);
+    else if (key > p->data)
+        p->rcl = rDelete(p->rcl, key);
+    else
+    {
+        node *q;
+        // node to be deleted from whichever subtree has greater height
+        if (height(p->lcl) > height(p->rcl))
+        {
+            q = findInorderPredecessor(p->lcl);
+            p->data = q->data;
+            p->lcl = rDelete(p->lcl, q->data);
+        }
+        else
+        {
+            q = findInorderSuccessor(p->rcl);
+            p->data = q->data;
+            p->rcl = rDelete(p->rcl, q->data);
+        }
+    }
     return p;
 }
 
