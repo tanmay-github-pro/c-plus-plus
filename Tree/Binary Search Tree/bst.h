@@ -41,10 +41,11 @@ int bst::height(node *p)
 {
     if (!p)
         return 0;
-    if (height(p->lcl) > height(p->rcl))
+    /* if (height(p->lcl) > height(p->rcl))
         return height(p->lcl) + 1;
     else
-        return height(p->lcl) + 1;
+        return height(p->lcl) + 1; */
+    return (max(height(p->lcl), height(p->rcl)) +1);
 }
 
 // Recursive function to search for an element in BST
