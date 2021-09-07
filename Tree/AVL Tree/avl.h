@@ -47,28 +47,30 @@ node *avl::rInsert(node *p, int key)
     {
         t = new node;
         t->data = key;
+        if(!root)
+            root = t;
         return t;
     }
     else
     {
-        if(key < p->data)
-            p->lcl = rInsert(p->lcl, key);  // this probably expands to this.rInsert()
-        else if(key > p->data)
+        if (key < p->data)
+            p->lcl = rInsert(p->lcl, key); // this probably expands to this.rInsert()
+        else if (key > p->data)
             p->rcl = rInsert(p->rcl, key);
     }
     p->height = updateHeight(p);
 
     // LL Rotation
-    if(balanceFactor(p) == 2 && balanceFactor(p->lcl) == 1)
+    if (balanceFactor(p) == 2 && balanceFactor(p->lcl) == 1)
         return llRotation(p);
     // LR Rotation
-    else if(balanceFactor(p) == 2 && balanceFactor(p->lcl) == -1)
+    else if (balanceFactor(p) == 2 && balanceFactor(p->lcl) == -1)
         return lrRotation(p);
     // RL Rotation
-    else if(balanceFactor(p) == -2 && balanceFactor(p->rcl) == 1)
+    else if (balanceFactor(p) == -2 && balanceFactor(p->rcl) == 1)
         return rlRotation(p);
     // RR Rotation
-    else if(balanceFactor(p) == -2 && balanceFactor(p->rcl) == -1)
+    else if (balanceFactor(p) == -2 && balanceFactor(p->rcl) == -1)
         return rrRotation(p);
 
     return p;
@@ -85,9 +87,9 @@ node *avl::llRotation(node *p)
     p->height = updateHeight(p);
     pl->height = updateHeight(pl);
 
-    if(root == p)
+    if (root == p)
         root = pl;
-    
+
     return pl;
 }
 node *avl::lrRotation(node *p)
@@ -105,9 +107,9 @@ node *avl::lrRotation(node *p)
     pl->height = updateHeight(pl);
     plr->height = updateHeight(plr);
 
-    if(p == root)
+    if (p == root)
         root = plr;
-    
+
     return plr;
 }
 node *avl::rlRotation(node *p)
