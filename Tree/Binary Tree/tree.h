@@ -168,7 +168,7 @@ int tree::height(node *p)
         else
             return y + 1;
     }
-    return 0;
+    return -1;
 }
 
 //inorder traversal
