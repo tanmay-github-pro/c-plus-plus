@@ -114,11 +114,39 @@ node *avl::lrRotation(node *p)
 }
 node *avl::rlRotation(node *p)
 {
-    return NULL;
+    node *pr = p->rcl; 
+    node *prl = pr->lcl;
+
+    pr->lcl = prl->rcl; 
+    p->rcl = prl->lcl;
+
+    prl->lcl = p; 
+    prl->rcl = pr; 
+
+    p->height = updateHeight(p);
+    pr->height = updateHeight(pr);
+    prl->height = updateHeight(prl);
+
+    if (p == root)
+        root = prl;
+        
+    return prl;
 }
 node *avl::rrRotation(node *p)
 {
-    return NULL;
+    node *pr = p->rcl;
+    node *prr = pr->rcl;
+
+    p->rcl = pr->lcl;
+    pr->lcl = p;
+
+    p->height = updateHeight(p);
+    pr->height = updateHeight(pr);
+
+    if(p == root)
+        root = pr;
+
+    return pr;
 }
 
 void avl::display(node *root, int level)
