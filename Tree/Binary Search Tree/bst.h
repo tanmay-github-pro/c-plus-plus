@@ -40,7 +40,7 @@ node *bst::getRoot()
 int bst::height(node *p)
 {
     if (!p)
-        return 0;
+        return -1;
     /* if (height(p->lcl) > height(p->rcl))
         return height(p->lcl) + 1;
     else
