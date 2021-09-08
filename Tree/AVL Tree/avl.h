@@ -7,6 +7,7 @@ class avl
 public:
     node *root;
     avl();
+    void createAVLTree();
     int height(node *p);
     int updateHeight(node *p);
     int balanceFactor(node *p);
@@ -21,6 +22,18 @@ public:
 avl::avl()
 {
     root = NULL;
+}
+
+void avl::createAVLTree()
+{
+    cout << "Enter elements to create AVL Tree (-1 to terminate)\n";
+    int x;
+    while (x != -1)
+    {
+        cin >> x;
+        if (x != -1)
+            rInsert(root, x);
+    }
 }
 
 int avl::height(node *p)
