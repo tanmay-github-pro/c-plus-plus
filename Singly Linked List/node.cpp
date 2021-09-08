@@ -109,10 +109,12 @@ node* node::insertBefore(node *start)
     
     return start;
 }
-void node::display(node *start) {
+void node::display(node *start) 
+{
     node *curr = start;
-    while (curr->next!=NULL){
-        cout<<curr->info;
+    while (curr != NULL)
+    {
+        cout << curr->info;
         curr = curr->next;
     }
 }
@@ -125,7 +127,7 @@ int main()
     char ch;
     do
     {
-        cout<<"1.InsertEnd\t2.InsertBeginning\t3.InsertAfter\n4.InsertBefore\t5.Display";
+        cout<<"1.InsertEnd  2.InsertBeginning  3.InsertAfter  4.InsertBefore  5.Display\n";
         cin>>x;
         switch (x)
         {
