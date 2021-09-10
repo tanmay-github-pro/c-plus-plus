@@ -74,6 +74,22 @@ int partition(int a[], int l, int r)
     return j+1;    
 }
 
+// This code takes the first element as pivot
+/* int partition(int a[], int l, int r){
+	int pivot = a[l];
+    // i looks for elements Greater in value than the pivot element
+    // j looks for elements Smaller in value than the pivot element
+	int i = l, j = r+1;
+	do{
+		do{i++;}while(a[i] < pivot);
+		do{j--;}while(a[j] > pivot);
+		if(i < j)
+			swap(a[i], a[j]);
+	}while(i < j);
+	swap (a[j], a[l]);
+	return j;
+} */
+
 void quickSort(int a[], int l, int r)
 {
     if (l < r)
