@@ -21,8 +21,9 @@ int main()
     return 0;
 }
 
-/*  Function will return updated position of pivot so that partitions can be made 
-    and quick sort will be performed on them
+/**
+ * Function will return updated position of pivot so that partitions can be made 
+ * and quick sort will be performed on them
  */
 /*
 int partition(int a[], int l, int r)
@@ -47,7 +48,12 @@ int partition(int a[], int l, int r)
 // this also works (self written code)
 int partition(int a[], int l, int r)
 {
+    // Last element in array is taken as pivot
     int pivot = a[r];
+    /**
+     * i looks for elements Greater in value than the pivot element
+     * j looks for elements Smaller in value than the pivot element
+    */
     int i = l-1, j = r;
     do
     {
@@ -63,6 +69,8 @@ int partition(int a[], int l, int r)
             swap(a[i], a[j]);
     } while (i < j);
     swap(a[j+1], a[r]);
+    
+    // j will stop at a value that will be the last smaller value than pivot
     return j+1;    
 }
 
