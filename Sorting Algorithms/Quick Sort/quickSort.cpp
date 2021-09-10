@@ -47,36 +47,36 @@ int partition(int a[], int l, int r)
 */
 
 // this also works (self written code)
-// int partition(int a[], int l, int r)
-// {
-//     // Last element in array is taken as pivot
-//     int pivot = a[r];
-//     /**
-//      * i looks for elements Greater in value than the pivot element
-//      * j looks for elements Smaller in value than the pivot element
-//     */
-//     int i = l-1, j = r;
-//     do
-//     {
-//         do
-//         {
-//             i++;
-//         } while (a[i] < pivot);
-//         do
-//         {
-//             j--;
-//         } while (a[j] > pivot && j != -1);
-//         if(i < j)
-//             swap(a[i], a[j]);
-//     } while (i < j);
-//     swap(a[j+1], a[r]);
+int partition(int a[], int l, int r)
+{
+    // Last element in array is taken as pivot
+    int pivot = a[r];
+    /**
+     * i looks for elements Greater in value than the pivot element
+     * j looks for elements Smaller in value than the pivot element
+    */
+    int i = l-1, j = r;
+    do
+    {
+        do
+        {
+            i++;
+        } while (a[i] < pivot);
+        do
+        {
+            j--;
+        } while (a[j] > pivot && j != -1);
+        if(i < j)
+            swap(a[i], a[j]);
+    } while (i < j);
+    swap(a[j+1], a[r]);
     
-//     // j will stop at a value that will be the last smaller value than pivot
-//     return j+1;    
-// }
+    // j will stop at a value that will be the last smaller value than pivot
+    return j+1;    
+}
 
-// This code takes the first element as pivot
-int partition(int a[], int l, int r){
+// This function to partition array takes the first element as pivot
+/* int partition(int a[], int l, int r){
 	int pivot = a[l];
     // i looks for elements Greater in value than the pivot element
     // j looks for elements Smaller in value than the pivot element
@@ -90,7 +90,7 @@ int partition(int a[], int l, int r){
 	swap (a[j], a[l]);
 	return j;
 }
-
+ */
 void quickSort(int a[], int l, int r)
 {
     if (l < r)
