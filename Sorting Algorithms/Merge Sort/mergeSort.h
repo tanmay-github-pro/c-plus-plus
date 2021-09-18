@@ -4,8 +4,22 @@
  * -> perform iterative Merge Sort
 */
 
+void mergeSort(int a[], int l, int h);
 void mergeSortIterative(int a[], int n);
 void merge(int a[], int l, int m, int h);
+
+void mergeSort(int a[], int l, int h)
+{
+    // to check if elements > 1
+    // if only a single element is present then its sorted
+    if (l < h)
+    {
+        int m = (l + h) / 2;
+        mergeSort(a, l, m);
+        mergeSort(a, m + 1, h);
+        merge(a, l, m, h);
+    }
+}
 
 void mergeSortIterative(int a[], int n)
 {
@@ -25,8 +39,8 @@ void mergeSortIterative(int a[], int n)
         if number of elements is not a power of 2
         p/2 - 1 because indices start from 0 and not 1
      */
-    if (p/2 < n)
-        merge(a, 0, p/2 - 1, n-1);
+    if (p / 2 < n)
+        merge(a, 0, p / 2 - 1, n - 1);
 }
 
 void merge(int a[], int l, int m, int h)
@@ -49,7 +63,7 @@ void merge(int a[], int l, int m, int h)
     int i = 0, j = 0, k = l;
     while (i < n1 && j < n2)
     {
-        if(aL[i] <= aR[j])
+        if (aL[i] <= aR[j])
             a[k++] = aL[i++];
         else
             a[k++] = aR[j++];
@@ -60,5 +74,4 @@ void merge(int a[], int l, int m, int h)
         a[k++] = aL[i++];
     while (j < n2)
         a[k++] = aR[j++];
-
 }
