@@ -16,13 +16,13 @@ Output
 For each test case, print a single line. If Chef cannot buy any tablet, it should contain the string "no tablet" (without quotes). Otherwise, it should contain a single integer — the maximum area of the screen of a tablet Chef can buy.
 
 **Constraints**
-1≤T≤100
-1≤N≤100
-1≤B≤1,000,000
-1≤Pi≤1,000,000 for each valid i
-1≤Wi,Hi≤10,000 for each valid i
+1 ≤ T ≤ 100
+1 ≤ N ≤ 100
+1 ≤ B ≤ 1,000,000
+1 ≤ P<sub>i</sub> ≤ 1,000,000 for each valid i
+1 ≤ W<sub>i</sub>, H<sub>i</sub> ≤ 10,000 for each valid i
 
-Sample Input 1 
+**Sample Input 1**
 3
 3 6
 3 4 4
@@ -33,11 +33,14 @@ Sample Input 1
 5 4 9
 1 10
 5 5 10
-Sample Output 1 
+
+**Sample Output 1**
 12
 no tablet
 25
-Explanation
+
+**Explanation**
+
 Example case 1: The first tablet (with screen area 3⋅4=12) is the best option for Chef, since Chef cannot afford the second one and the third one has a smaller screen.
 
 Example case 2: Chef's budget is 6, but all tablets have higher prices, so Chef cannot buy any tablet.
