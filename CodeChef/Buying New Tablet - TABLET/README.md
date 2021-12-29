@@ -41,9 +41,7 @@ For each test case, print a single line. If Chef cannot buy any tablet, it shoul
 **Sample Input 1**
 
 3
-
 3 6  
-
 3 4 4  
 5 5 7  
 5 2 5  
