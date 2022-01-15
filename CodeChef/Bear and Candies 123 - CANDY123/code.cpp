@@ -9,34 +9,34 @@ int main(void)
     cin >> t;
     while (t--)
     {
-        int flag = 0;
         int a, b;
         cin >> a >> b;
-        int totalCandiesLimak = 0;
-        int totalCandiesBob = 0;
-        int candies_to_be_eaten_by_Limak = 1;
-        int candies_to_be_eaten_by_Bob = 2;
+        int total_candies_Bob = 0;
+        int total_candies_Limak = 0;
+        int candies_to_be_eaten = 1;
         while (1)
         {
-            totalCandiesLimak += candies_to_be_eaten_by_Limak;
-            totalCandiesBob += candies_to_be_eaten_by_Bob;
-            if (totalCandiesLimak > a)
+            if (candies_to_be_eaten % 2 == 0)
             {
-                flag = 1;
+                total_candies_Bob = total_candies_Bob + candies_to_be_eaten;
+            }
+            else
+            {
+                total_candies_Limak = total_candies_Limak + candies_to_be_eaten;
+            }
+            if (total_candies_Limak > a)
+            {
+                cout << "Bob" << endl;
                 break;
             }
-            if (totalCandiesBob > b)
+            else if (total_candies_Bob > b)
+            {
+                cout << "Limak" << endl;
                 break;
-            
-            candies_to_be_eaten_by_Limak += 2;
-            candies_to_be_eaten_by_Bob += 2;
+            }
+            candies_to_be_eaten++;
         }
-        if (flag == 1)
-            cout << "Bob\n";
-        else
-            cout << "Limaak\n";
     }
-    
 
     return 0;
 }
